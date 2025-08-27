@@ -1,0 +1,21 @@
+2024-05-26 11:56:58,575 - INFO - Définir la fonction appelée lorsqu'un nouvel élément est sélectionné dans la combobox pour le choix des agences
+2024-05-26 11:56:58,696 - INFO - Lancement du programme
+2024-05-26 11:57:11,378 - INFO - Annuler button clicked
+2024-06-25 10:38:20,915 - INFO - Définir la fonction appelée lorsqu'un nouvel élément est sélectionné dans la combobox pour le choix des agences
+2024-06-25 10:38:21,653 - INFO - Lancement du programme
+2024-06-25 10:38:33,140 - INFO - Continuer button clicked
+2025-08-21 10:20:21,422 - INFO - Définir la fonction appelée lorsqu'un nouvel élément est sélectionné dans la combobox pour le choix des agences
+2025-08-21 10:20:21,653 - INFO - Lancement du programme
+2025-08-21 10:20:38,064 - INFO - Continuer button clicked
+2025-08-21 10:21:22,967 - INFO - Selected Text:
+2025-08-21 10:21:22,967 - INFO - BETHUNE
+2025-08-21 10:21:22,968 - INFO - self.correspondances_selectionnees
+2025-08-21 10:21:22,968 - INFO - {'1110': 'Base   ', '1120': 'Base   ', '1130': 'Base   ', '1170': 'Base   ', '1172': 'Base   ', '1175': 'Base   ', '1285': 'Base   ', '1900': 'à Payer  ', '1910': 'à Payer  ', '3005': 'Mont_Base ', '3006': 'Mont_Base ', '3007': 'Mont_Base ', '3031': 'Patronal Mont', '3050': 'Patronal Mont', '3081': 'Patronal Mont', '3101': 'Mont_Base ', '3201': 'Mont_Base ', '3212': 'Mont_Base ', '3208': 'Mont_Base ', '3401': 'Mont_Base ', '3402': 'Mont_Base ', '3403': 'Mont_Base ', '3404': 'Mont_Base ', '3601': 'Mont_Base ', '3750': 'Mont_Base ', '4072': 'à Payer  ', '5230': 'Base   ', '6000': 'à Retenir  ', '6011': 'à Retenir  '}
+2025-08-21 10:21:22,968 - INFO - rubriques_en_triplon_selectionnees
+2025-08-21 10:21:22,969 - INFO - {'5110': ['5110 base', '5110 salarié montant', '5110 à retenir']}
+2025-08-21 10:21:22,969 - INFO - rubriques_en_triplon_2_selectionnees
+2025-08-21 10:21:22,970 - INFO - {'5110 base': 'Mont_Base ', '5110 salarié montant': 'Salarié Mont', '5110 à retenir': 'à Retenir  '}
+2025-08-21 10:21:22,970 - INFO - rubriques_en_doublon selectionnees
+2025-08-21 10:21:22,970 - INFO - {'3082': ['3082', '3082 base', '3082 patronal montant'], '5100': ['5100', '5100 base', '5100 à retenir'], '5102': ['5102', '5102 base', '5102 à retenir'], '5103': ['5103', '5103 base', '5103 à retenir'], '3602': ['3602', '3602 base', '3602 à retenir'], '4076': ['4076', '4076 base', '4076 à payer']}
+2025-08-21 10:21:22,970 - INFO - rubriques_en_doublon_2 selectionnees
+2025-08-21 10:21:22,971 - INFO - {'3082 base': 'Mont_Base ', '3082 patronal montant': 'Patronal Mont', '5100 base': 'Mont_Base ', '5100 à retenir': 'à Retenir  ', '5102 base': 'Mont_Base ', '5102 à retenir': 'à Retenir  ', '5103 base': 'Mont_Base ', '5103 à retenir': 'à Retenir  ', '3602 base': 'Mont_Base ', '3602 à retenir': 'à Retenir  ', '4076 base': 'Mont_Base ', '4076 à payer': 'à Payer  '}
