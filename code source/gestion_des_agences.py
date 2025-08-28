@@ -1377,10 +1377,91 @@ rubriques_en_triplon_2_VILLEPINTE = {
     '5110 à retenir' : 'à Retenir  ',
 }
 
+# Correspondances pour l'agence d'ARMENTIÈRES
+CORRESPONDANCES_ARMENTIERES = {
+    '1110': 'Base   ',
+    '1120': 'Base   ',
+    '1130': 'Base   ',
+    '1170': 'Base   ',
+    '1175': 'Base   ',
+    '1172': 'Base   ',  # Hrs Dimanche
+    '1191': 'Base   ',  # Hrs à 125% (ancien code conservé)
+    '1200': 'Base   ',  # Congés événements familiaux
+    '1340': 'Base   ',  # Heures complémentaires
+    '1420': 'Base   ',  # Hrs Congés payés
+    '1425': 'Base   ',  # Heures habillage/déshabillage
+    '1540': 'Base   ',  # Recub (payée)
+    '1545': 'Base   ',  # Heures de route
+    '1550': 'Base   ',  # Heures de pause
+    '1735': 'Base   ',  # Hrs à 100% (pour compatibilité)
+    '1740': 'Base   ',  # Hrs à 125% (pour compatibilité)
+    '1745': 'Base   ',  # Hrs à 150% (pour compatibilité)
+    '1500': 'Base   ',  # Heures temps pause
+    '1750': 'Base   ',  # Heures complémentaires
+    '1505': 'Base   ',  # Nouvelle rubrique 1505
+    '1755': 'Base   ',  # Nouvelle rubrique 1755
+    '1900': 'à Payer  ',
+    '1910': 'à Payer  ',
+    '3005': 'Mont_Base ',
+    '3006': 'Mont_Base ',
+    '3007': 'Mont_Base ',
+    '3031': 'Patronal Mont',
+    '3050': 'Mont_Base ',  # Versement mobilité
+    '3081': 'Mont_Base ',  # Réduction générale URSSAF
+    '3101': 'Mont_Base ',  # Réduction générale Pole Emploi
+    '3201': 'Mont_Base ',
+    '3202': 'Mont_Base ',
+    '3208': 'Mont_Base ',  # Réduction générale Retraite
+    '3401': 'Mont_Base ',
+    '3402': 'Mont_Base ',
+    '3403': 'Mont_Base ',
+    '3404': 'Mont_Base ',
+    '3601': 'Mont_Base ',  # Siaci St Honoré FG
+    '3750': 'Mont_Base ',
+    '4072': 'à Payer  ',   # Intempéries
+    '109': 'Patronal Mont', # Forfait Social sur Prévoyance (code spécifique)
+    '5230': 'à Retenir  ',
+    '6000': 'à Retenir  ',
+    '6011': 'à Retenir  ',
+}
+
+rubriques_en_doublon_ARMENTIERES = {
+    '3082': ['3082', '3082 base', '3082 patronal montant'],
+    '5100': ['5100', '5100 base', '5100 à retenir'],
+    '5102': ['5102', '5102 base', '5102 à retenir'],
+    '5103': ['5103', '5103 base', '5103 à retenir'],
+    '3602': ['3602', '3602 base', '3602 à retenir'],
+    '4076': ['4076', '4076 base', '4076 à payer'],
+}
+rubriques_en_doublon_2_ARMENTIERES = {
+    '3082 base': 'Mont_Base ',
+    '3082 patronal montant': 'Patronal Mont',
+    '5100 base': 'Mont_Base ',
+    '5100 à retenir': 'à Retenir  ',
+    '5102 base': 'Mont_Base ',
+    '5102 à retenir': 'à Retenir  ',
+    '5103 base': 'Mont_Base ',
+    '5103 à retenir': 'à Retenir  ',
+    '3602 base': 'Mont_Base ',
+    '3602 à retenir': 'à Retenir  ',
+    '4076 base': 'Mont_Base ',
+    '4076 à payer': 'à Payer  ',
+}
+
+rubriques_en_triplon_ARMENTIERES = {
+    '5110': ['5110 base', '5110 salarié montant', '5110 à retenir'],
+}
+rubriques_en_triplon_2_ARMENTIERES = {
+    '5110 base': 'Mont_Base ',
+    '5110 salarié montant': 'Salarié Mont',
+    '5110 à retenir' : 'à Retenir  ',
+}
+
 # Dictionnaire principal contenant toutes les correspondances pour chaque agence
 CORRESPONDANCES_AGENCES = {
     'Choix de l agence' : CHOIX_DE_L_AGENCE,
     'ARRAS': CORRESPONDANCES_ARRAS,
+    'ARMENTIERES': CORRESPONDANCES_ARMENTIERES,
     'ASNIERES': CORRESPONDANCES_ASNIERES,
     'BETHUNE': CORRESPONDANCES_BETHUNE,
     'CARVIN': CORRESPONDANCES_CARVIN,

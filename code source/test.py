@@ -826,7 +826,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Remplacer la valeur de 'A Remplir' avec la valeur de 'Brut' de la dernière ligne de 'resultat_fusion_mat'
         resultat_fusion_2.loc[index_9900, 'A Remplir'] = resultat_fusion_mat['Brut'].iloc[-1]
         resultat_fusion_2.loc[index_9901, 'A Remplir'] = resultat_fusion_mat['Tranche A'].iloc[-1]
-        resultat_fusion_2.loc[index_9902, 'A Remplir'] = resultat_fusion_mat['Tranche B'].iloc[-1]
+        
+        valeur_tranche_b = resultat_fusion_mat['Tranche B'].iloc[-1]
+        try:
+            if pd.notnull(valeur_tranche_b):
+                resultat_fusion_2.loc[index_9902, 'A Remplir'] = float(valeur_tranche_b)
+            else:
+                resultat_fusion_2.loc[index_9902, 'A Remplir'] = ""
+        except (ValueError, TypeError):
+            resultat_fusion_2.loc[index_9902, 'A Remplir'] = valeur_tranche_b
+            
         if self.selected_text == "LILLEGENERALISTE":
             resultat_fusion_2.loc[index_9903, 'A Remplir'] = resultat_fusion_mat['Hrs Trav '].iloc[-1]
         else: 
@@ -1091,7 +1100,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             logging.info("Copie réussie pour BRUT à payer.")
         else:
             print("Erreur: Plus d'une ligne trouvée dans rubrique_total_Brut. Veuillez vérifier vos données.")
-            logging.info("Erreur: Plus d'une ligne trouvée dans rubrique_total_Brut. Veuillez vérifier vos données.")
 
         # Assurez-vous qu'une seule ligne est sélectionnée dans rubrique_total_Fiscal
         if len(rubrique_total_Fiscal) == 1:
@@ -1104,7 +1112,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             logging.info("Copie réussie pour Fiscal")
         else:
             print("Erreur: Plus d'une ligne trouvée dans rubrique_total_Fiscal. Veuillez vérifier vos données.")
-            logging.info("Erreur: Plus d'une ligne trouvée dans rubrique_total_Fiscal. Veuillez vérifier vos données.")
 
         # Assurez-vous qu'une seule ligne est sélectionnée dans rubrique_total_Net
         if len(rubrique_total_Net_filtre) == 1:
@@ -1117,7 +1124,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             logging.info("Copie réussie pour Net ***.")
         else:
             print("Erreur: Plus d'une ligne trouvée dans rubrique_total_Net. Veuillez vérifier vos données.")
-            logging.info("Erreur: Plus d'une ligne trouvée dans rubrique_total_Net. Veuillez vérifier vos données.")
 
         print("Ligne BRUT à payer :")
         print(ligne_BRUT_a_payer)
@@ -1565,16 +1571,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 print("Valeur 1:", valeur_1)
                 print("Valeur 2:", valeur_2)
                 print("Valeur 3:", valeur_3)
-                logging.info("Valeur 1:")
-                logging.info(valeur_1)
-                logging.info("Valeur 2:")
-                logging.info(valeur_2)
-                logging.info("Valeur 3:")
-                logging.info(valeur_3)
+                logging.info("Valeur 1:", valeur_1)
+                logging.info("Valeur 2:", valeur_2)
+                logging.info("Valeur 3:", valeur_3)
 
         else:
             print("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
-            logging.info("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
+            logging.info
 
         # Accéder à la première ligne de resultat_fusion_mat_rub_triples
         # Remplace sur chaque ligne, la valeur de 'Rubr' (4 digits) par la liste dipo dans gestion_des_agences.py rubriques_en_triplon_*, plus particulierement : '5110': ['5110 base', '5110 salarié montant', '5110 à retenir'],
@@ -1613,12 +1616,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 print("Valeur 1 triplon 2:", valeur_1_triplon_2)
                 print("Valeur 2 triplon 2:", valeur_2_triplon_2)
                 print("Valeur 3 triplon 2:", valeur_3_triplon_2)
-                logging.info("Valeur 1 triplon 2:")
-                logging.info(valeur_1_triplon_2)
-                logging.info("Valeur 2 triplon 2:")
-                logging.info(valeur_2_triplon_2)
-                logging.info("Valeur 3 triplon 2:")
-                logging.info(valeur_3_triplon_2)
+                logging.info("Valeur 1 triplon 2:", valeur_1_triplon_2)
+                logging.info("Valeur 2 triplon 2:", valeur_2_triplon_2)
+                logging.info("Valeur 3 triplon 2:", valeur_3_triplon_2)
 
         else:
             print("Aucune rubrique en triplon 2 n'a été trouvée pour l'agence sélectionnée.")
@@ -1638,8 +1638,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 logging.info("Résultat après remplacement triplon 2 :")
                 logging.info(resultat_fusion_mat_rub_triples)
         else:
-            print("Aucune rubrique en triplon 2 n'a été trouvée pour l'agence sélectionnée.")
-            logging.info("Aucune rubrique en triplon 2 n'a été trouvée pour l'agence sélectionnée.")
+            print("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
+            logging.info("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
 
         #############################################
         # Ecriture des donnes dans le fichier final #
@@ -1832,6 +1832,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                         elif ws2.cell(row=row_idx, column=1).value is not None and ws2.cell(row=row_idx, column=1).value.startswith('3404 base'):
                             # Exception pour '3404 base': ne pas convertir les valeurs négatives en valeurs absolues
                             pass
+                        elif ws2.cell(row=row_idx, column=1).value is not None and ws2.cell(row=row_idx, column=1).value.startswith('3006 base'):
+                            # Exception pour '3006 base': ne pas convertir les valeurs négatives en valeurs absolues
+                            pass
                         elif ws2.cell(row=row_idx, column=3).value is not None and float(ws2.cell(row=row_idx, column=3).value) < 0:
                             # Remplacer les valeurs négatives par leur valeur absolue
                             ws2.cell(row=row_idx, column=3, value=abs(float(ws2.cell(row=row_idx, column=3).value)))
@@ -1840,21 +1843,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 if ligne_Jmatricule2:
                     print("ligne_Jmatricule2")
                     for row_idx in range(ligne_Jmatricule2 + 1, ligne_Jrubriques2):
-                        cell_value_col1 = ws2.cell(row=row_idx, column=1).value
-                        cell_value_col3 = ws2.cell(row=row_idx, column=3).value
-                        
-                        if cell_value_col1 is not None and not cell_value_col3:
+                        if ws2.cell(row=row_idx, column=1).value is not None and not ws2.cell(row=row_idx, column=3).value:
                             # Écrire la valeur 0 dans la colonne C si la colonne A contient une valeur non null et la colonne C est vide
                             ws2.cell(row=row_idx, column=3, value=0)
-                        elif cell_value_col1 is not None and cell_value_col3 == '     ': # Asniere
+                        elif ws2.cell(row=row_idx, column=1).value is not None and ws2.cell(row=row_idx, column=3).value == '     ': # Asniere
                             # Si la valeur de la colonne C est '     ', alors elle vaut 0
                             ws2.cell(row=row_idx, column=3, value=0)
-                        # Exception pour "Brut tranche B" - préserver le signe négatif
-                        elif (cell_value_col1 is not None and 
-                              str(cell_value_col1).startswith('9902') and 
-                              'Brut tranche B' in str(ws2.cell(row=row_idx, column=2).value)):
-                            # Pour "Brut tranche B" (9902), ne pas appliquer abs() - préserver le signe négatif
+                        elif ws2.cell(row=row_idx, column=1).value is not None and ws2.cell(row=row_idx, column=1).value.startswith('3006 base'):
+                            # Exception pour '3006 base': ne pas convertir les valeurs négatives en valeurs absolues
                             pass
+                
                 if ligne_Jrubriques2:
                     print("ligne_Jrubriques2")
                     for row_idx in range(ligne_Jrubriques2 + 1, ligne_TotalAPayer2):
@@ -1864,10 +1862,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                         elif ws2.cell(row=row_idx, column=1).value is not None and ws2.cell(row=row_idx, column=3).value == '      ': # Lens
                             # Si la valeur de la colonne C est '     ', alors elle vaut 0
                             ws2.cell(row=row_idx, column=3, value=0)
+                        elif ws2.cell(row=row_idx, column=1).value is not None and ws2.cell(row=row_idx, column=1).value.startswith('3006 base'):
+                            # Exception pour '3006 base': ne pas convertir les valeurs négatives en valeurs absolues
+                            pass
                         elif ws2.cell(row=row_idx, column=3).value is not None and float(ws2.cell(row=row_idx, column=3).value) < 0:
                             # Remplacer les valeurs négatives par leur valeur absolue
                             ws2.cell(row=row_idx, column=3, value=abs(float(ws2.cell(row=row_idx, column=3).value)))
-
                                 
                 # Sauvegarder les modifications dans le fichier Excel
                 wb2.save(excel_file_3_path)
@@ -2073,7 +2073,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 
