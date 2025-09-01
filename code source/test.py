@@ -941,45 +941,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         resultat_fusion_3= resultat_fusion_3[['Rubr', 'Titre', 'A Remplir']]
         resultat_fusion_3 = pd.concat([resultat_fusion_3], axis=1)
 
-        # Debug: Afficher TOUT le contenu de resultat_fusion_3 pour voir ce qui existe
-        print("=== DEBUG COMPLET resultat_fusion_3 INITIAL ===")
-        print("Toutes les lignes de resultat_fusion_3:")
-        for idx, row in resultat_fusion_3.iterrows():
-            print(f"Index {idx}: Rubr='{row['Rubr']}', Titre='{row['Titre']}', A Remplir='{row['A Remplir']}'")
-        print("=== FIN DEBUG COMPLET ===")
-        logging.info("DEBUG COMPLET resultat_fusion_3:")
-        logging.info(resultat_fusion_3)
-
 
         # Recherche dans le DataFrame fusionné la ligne dont le Titre contient 'BRUT à payer'
         ligne_BRUT_a_payer = resultat_fusion_3[resultat_fusion_3['Titre'].str.contains('BRUT à payer', case=False, na=False)]
-        # Recherche dans le DataFrame fusionné la ligne dont le Titre contient 'Fiscal'
+        # Recherche dans le DataFrame fusionné la ligne dont le Titre contient 'Fiscalr'
         ligne_Fiscal = resultat_fusion_3[resultat_fusion_3['Titre'].str.contains('Fiscal', case=False, na=False)]
-        # Recherche dans le DataFrame fusionné la ligne dont le Titre contient 'Net ***' pour Total à payer
-        ligne_Total_a_payer = resultat_fusion_3[resultat_fusion_3['Titre'].str.contains('Net.*\*', case=False, na=False, regex=True)]
-        
-        # Si aucune ligne "Net ***" n'est trouvée, créer une ligne pour "Total à payer"
-        if ligne_Total_a_payer.empty:
-            print("Aucune ligne 'Net ***' trouvée dans resultat_fusion_3. Création manuelle d'une ligne 'Total à payer'.")
-            logging.info("Aucune ligne 'Net ***' trouvée dans resultat_fusion_3. Création manuelle d'une ligne 'Total à payer'.")
-            
-            # Créer une ligne vide pour "Total à payer"
-            nouvelle_ligne = pd.DataFrame({
-                'Rubr': ['Total à payer'],
-                'Titre': ['Net ***'], 
-                'A Remplir': [None]
-            })
-            
-            # Ajouter cette ligne à resultat_fusion_3
-            resultat_fusion_3 = pd.concat([resultat_fusion_3, nouvelle_ligne], ignore_index=True)
-            
-            # Récupérer à nouveau la ligne
-            ligne_Total_a_payer = resultat_fusion_3[resultat_fusion_3['Titre'].str.contains('Net.*\*', case=False, na=False, regex=True)]
-            
-            print("Ligne 'Total à payer' créée manuellement:")
-            print(ligne_Total_a_payer)
-            logging.info("Ligne 'Total à payer' créée manuellement:")
-            logging.info(ligne_Total_a_payer)
+        # Recherche dans le DataFrame fusionné la ligne dont le Titre contient 'Net'
+        ligne_Net = resultat_fusion_3[resultat_fusion_3['Titre'].str.contains('Net', case=False, na=False)]
 
         # Pour l'agence de Lens la valeur 1175 vaut 1440 donc on va la traiter a part ici, la meme chose pour l'agence de Bethune : 
         if self.selected_text == "LENS":
@@ -1070,12 +1038,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Filtrer les lignes où la colonne 'Rubrique' contient la valeur 'Total'
         rubrique_total = rubrique_total[rubrique_total['Rubrique'].str.contains('Total', case=False, na=False)]
 
-        # Debug: Afficher TOUT le contenu de rubrique_total pour voir toutes les lignes disponibles
-        print("=== DEBUG COMPLET rubrique_total ===")
-        print("Toutes les lignes avec 'Total' dans rubrique_total:")
-        for idx, row in rubrique_total.iterrows():
-            print(f"Index {idx}: Rubrique='{row['Rubrique']}', Intitulé='{row['Intitulé']}', à Payer={row['à Payer  ']}")
-        print("=== FIN DEBUG COMPLET rubrique_total ===")
 
         # Afficher les valeurs importées
         print("Rubrique Total :")
@@ -1091,22 +1053,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Filtrer la lignes où la colonne 'Intitulé' contient la valeur 'Fiscal'
         rubrique_total_Fiscal = rubrique_total[rubrique_total['Intitulé'].str.contains('Fiscal', case=False, na=False)]
 
-        # Rechercher la ligne avec Net *** dans l'intitulé (pour Total à payer)
-        # Chercher d'abord "Net ***" sans chiffres, sinon prendre n'importe quelle ligne avec "Net"
-        rubrique_total_Net = rubrique_total[rubrique_total['Intitulé'].str.contains('Net.*\*', case=False, na=False, regex=True)]
-        if rubrique_total_Net.empty:
-            # Fallback: chercher toute ligne avec "Net" 
-            rubrique_total_Net = rubrique_total[rubrique_total['Intitulé'].str.contains('Net', case=False, na=False)]
-        
-        # Priorité : prendre la ligne "Net ***" sans chiffres entre parenthèses
-        if len(rubrique_total_Net) > 1:
-            # Chercher la ligne exacte "Net ***" (sans chiffres entre parenthèses)
-            rubrique_net_simple = rubrique_total_Net[~rubrique_total_Net['Intitulé'].str.contains(r'\(\d+\)', case=False, na=False, regex=True)]
-            if not rubrique_net_simple.empty:
-                rubrique_total_Net = rubrique_net_simple
-                print("Sélection de la ligne 'Net ***' sans chiffres entre parenthèses")
-            else:
-                print("Aucune ligne 'Net ***' simple trouvée, utilisation de la première ligne disponible")
+        # Filtrer la lignes où la colonne 'Intitulé' contient la valeur 'Net    ***'
+        rubrique_total_Net = rubrique_total[rubrique_total['Intitulé'].str.contains('Net', case=False, na=False)]
 
         # Afficher les valeurs importées
         print("rubrique_total_Brut :")
@@ -1115,14 +1063,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print(rubrique_total_Fiscal)
         print("rubrique_total_Net :")
         print(rubrique_total_Net)
-        print("=== DEBUG TOTAL À PAYER ===")
-        print(f"Nombre de lignes trouvées dans rubrique_total_Net: {len(rubrique_total_Net)}")
-        if len(rubrique_total_Net) > 0:
-            print("Valeurs à payer disponibles:")
-            for idx, row in rubrique_total_Net.iterrows():
-                print(f"  - Intitulé: '{row['Intitulé']}', à Payer: {row['à Payer  ']}")
-        print(f"Nombre de lignes trouvées pour ligne_Total_a_payer: {len(ligne_Total_a_payer)}")
-        print("=== FIN DEBUG ===")
 
         
         logging.info("Afficher les valeurs importées")
@@ -1145,7 +1085,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         
         # La ligne qui contient un chiffe avec Net ne nous interesse pas : 
         # Filtre pour sélectionner la ligne qui ne contient pas de chiffre dans la colonne 'Intitulé'
-        # rubrique_total_Net_filtre = rubrique_total_Net[~rubrique_total_Net['Intitulé'].str.contains(r'\d', regex=True, na=False)]
+        rubrique_total_Net_filtre = rubrique_total_Net[~rubrique_total_Net['Intitulé'].str.contains(r'\d', regex=True, na=False)]
         
         # Copie de la valeur de la colonne 'à Payer  ' de 'rubrique_total_Brut' vers la colonne 'A Remplir' de 'ligne_BRUT_a_payer', 'ligne_Fiscal' et 'ligne_Net'.
 
@@ -1173,23 +1113,48 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             print("Erreur: Plus d'une ligne trouvée dans rubrique_total_Fiscal. Veuillez vérifier vos données.")
 
-       
-        # Traitement pour "Total à payer" - Utiliser la première ligne disponible de rubrique_total_Net
-        if len(rubrique_total_Net) >= 1:
-            # Récupérer la valeur de la colonne 'à Payer' de la première ligne disponible
-            valeur_a_payer_net = rubrique_total_Net.iloc[0]['à Payer  ']
-            # Modifier la valeur dans la colonne 'A Remplir' de ligne_Total_a_payer
-            if not ligne_Total_a_payer.empty:
-                ligne_Total_a_payer.loc[:, 'A Remplir'] = valeur_a_payer_net
-                print(f"Copie réussie pour Total à payer: {valeur_a_payer_net}")
-                logging.info(f"Copie réussie pour Total à payer: {valeur_a_payer_net}")
-            else:
-                print("Erreur: ligne_Total_a_payer est vide")
-                logging.error("Erreur: ligne_Total_a_payer est vide")
-        else:
-            print("Erreur: Aucune ligne 'Net' trouvée dans rubrique_total.")
-            logging.error("Erreur: Aucune ligne 'Net' trouvée dans rubrique_total.")
+        # Assurez-vous qu'une seule ligne est sélectionnée dans rubrique_total_Net
+        if len(rubrique_total_Net_filtre) == 1:
+            # Récupérer la valeur de la colonne 'à Payer' de rubrique_total_Net
+            valeur_a_payer_net = rubrique_total_Net_filtre.iloc[0]['à Payer  ']
 
+            # Modifier la valeur dans la colonne 'A Remplir' de ligne_Net
+            ligne_Net.loc[:, 'A Remplir'] = valeur_a_payer_net
+            print("Copie réussie pour Net ***.")
+            logging.info("Copie réussie pour Net ***.")
+        else:
+            print("Erreur: Plus d'une ligne trouvée dans rubrique_total_Net. Veuillez vérifier vos données.")
+
+        print("Ligne BRUT à payer :")
+        print(ligne_BRUT_a_payer)
+        print("ligne_Fiscal :")
+        print(ligne_Fiscal)
+        print("ligne_Net :")
+        print(ligne_Net)
+
+        logging.info("Ligne BRUT à payer :")
+        logging.info(ligne_BRUT_a_payer)
+        logging.info("ligne_Fiscal :")
+        logging.info(ligne_Fiscal)
+        logging.info("ligne_Net :")
+        logging.info(ligne_Net)
+
+        # Copie réussie pour BRUT à payer.
+        # Copie réussie pour Fiscal.
+        # Copie réussie pour Net ***.
+        # Ligne BRUT à payer :
+        #    Rubr         Titre A Remplir
+        # 78  Total   BRUT à payer   99384.7
+        # ligne_Fiscal :
+        #     Rubr   Titre A Remplir
+        # 84  Total  Fiscal  78464.64
+        # ligne_Net :
+        #            Rubr    Titre A Remplir
+        # 92  Total à payer  Net ***   78018.7
+
+        # Preparation de 'resultat_fusion_3' pour l'ecriture dans le fichier final.
+
+        # Pour cela, integration des donnees de la colonne 'A Remplir' de 'ligne_BRUT_a_payer', 'ligne_Fiscal' et 'ligne_Net' dans 'resultat_fusion_3'
         # Intégration des données de 'ligne_BRUT_a_payer' dans 'resultat_fusion_3'
         if not ligne_BRUT_a_payer.empty:
             brut_a_payer_value = ligne_BRUT_a_payer.iloc[0]['A Remplir']
@@ -1200,18 +1165,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             fiscal_value = ligne_Fiscal.iloc[0]['A Remplir']
             resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('Fiscal', case=False, na=False), 'A Remplir'] = fiscal_value
 
-        # Intégration des données de 'ligne_Total_a_payer' dans 'resultat_fusion_3'
-        if not ligne_Total_a_payer.empty:
-            total_a_payer_value = ligne_Total_a_payer.iloc[0]['A Remplir']
-            # Mettre à jour toutes les lignes contenant "Net ***" ou "Total à payer"
-            mask_net = resultat_fusion_3['Titre'].str.contains('Net.*\*', case=False, na=False, regex=True)
-            mask_total = resultat_fusion_3['Titre'].str.contains('Total à payer', case=False, na=False)
-            resultat_fusion_3.loc[mask_net | mask_total, 'A Remplir'] = total_a_payer_value
-            print(f"Intégration Total à payer réussie avec la valeur: {total_a_payer_value}")
-            logging.info(f"Intégration Total à payer réussie avec la valeur: {total_a_payer_value}")
-        else:
-            print("Erreur: ligne_Total_a_payer est vide, impossible d'intégrer la valeur")
-            logging.error("Erreur: ligne_Total_a_payer est vide, impossible d'intégrer la valeur")
+        # Intégration des données de 'ligne_Net' dans 'resultat_fusion_3'
+        if not ligne_Net.empty:
+            net_value = ligne_Net.iloc[0]['A Remplir']
+            resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('Net', case=False, na=False), 'A Remplir'] = net_value
 
         if self.selected_text == "LENS":
             if not ligne_1175.empty:
@@ -1234,12 +1191,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # Afficher les données de 'resultat_fusion_3' après la suppression des lignes avec des valeurs nulles
         # print("resultat_fusion_3 après suppression des lignes avec des valeurs nulles :")
-        print("=== CONTENU FINAL DE resultat_fusion_3 ===")
         print(resultat_fusion_3)
-        print("Lignes contenant 'Net' ou 'Total à payer':")
-        mask_debug = resultat_fusion_3['Titre'].str.contains('Net|Total.*payer', case=False, na=False, regex=True)
-        print(resultat_fusion_3[mask_debug])
-        print("=== FIN CONTENU FINAL ===")
         logging.info("resultat_fusion_3")
         logging.info(resultat_fusion_3)
 
@@ -1625,7 +1577,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         else:
             print("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
-            logging.info("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
+            logging.info
 
         # Accéder à la première ligne de resultat_fusion_mat_rub_triples
         # Remplace sur chaque ligne, la valeur de 'Rubr' (4 digits) par la liste dipo dans gestion_des_agences.py rubriques_en_triplon_*, plus particulierement : '5110': ['5110 base', '5110 salarié montant', '5110 à retenir'],
@@ -1746,28 +1698,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
             if ligne_Jrubriques:
-                # Écrire les valeurs de resultat_fusion_3 aux bonnes positions dans le fichier Excel
-                print("=== DEBUG ÉCRITURE resultat_fusion_3 ===")
+                # Écrire les valeurs dans la colonne 3 après la ligne 'Journal de rubriques'
+                ligne_ecriture2 = ligne_Jrubriques + 1
+                colonne_ecriture = 3  # Colonnes sont 1-indexed
                 for index, row in resultat_fusion_3.iterrows():
-                    rubr_ou_titre = row['Rubr'] if pd.notnull(row['Rubr']) else row['Titre']
-                    valeur_a_ecrire = row['A Remplir']
-                    
-                    print(f"Recherche de '{rubr_ou_titre}' pour écrire la valeur: {valeur_a_ecrire}")
-                    
-                    # Chercher la ligne correspondante dans le fichier Excel
-                    ligne_trouvee = False
-                    for row_idx in range(1, ws.max_row + 1):
-                        cell_value = ws.cell(row=row_idx, column=1).value
-                        if cell_value and str(cell_value).strip() == str(rubr_ou_titre).strip():
-                            ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
-                            print(f"✅ Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour '{rubr_ou_titre}'")
-                            ligne_trouvee = True
-                            break
-                    
-                    if not ligne_trouvee:
-                        print(f"❌ Ligne non trouvée pour '{rubr_ou_titre}'")
-                
-                print("=== FIN DEBUG ÉCRITURE ===")
+                    ws.cell(row=ligne_ecriture2, column=colonne_ecriture, value=row['A Remplir'])
+                    ligne_ecriture2 += 1
 
             
             if ligne_Jmatricule:
@@ -2137,6 +2073,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
