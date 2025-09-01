@@ -1457,6 +1457,12 @@ rubriques_en_triplon_2_ARMENTIERES = {
     '5110 à retenir' : 'à Retenir  ',
 }
 
+# Configuration spécifique des totaux pour ARMENTIERES
+TOTAUX_SPECIFIQUES_ARMENTIERES = {
+    'BRUT_a_payer': 'utiliser_brut_total',  # Le total BRUT à payer doit être égal au Brut total
+    'Fiscal': 'utiliser_premier_total'       # Le total Fiscal doit prendre la valeur du premier total (BRUT à payer)
+}
+
 # Dictionnaire principal contenant toutes les correspondances pour chaque agence
 CORRESPONDANCES_AGENCES = {
     'Choix de l agence' : CHOIX_DE_L_AGENCE,
@@ -1480,4 +1486,9 @@ CORRESPONDANCES_AGENCES = {
     'ROUBAIX': CORRESPONDANCES_ROUBAIX,
     'VALENCIENNES': CORRESPONDANCES_VALENCIENNES,
     'VILLEPINTE': CORRESPONDANCES_VILLEPINTE,
+}
+
+# Dictionnaire des configurations spéciales pour les totaux par agence
+TOTAUX_SPECIFIQUES_AGENCES = {
+    'ARMENTIERES': TOTAUX_SPECIFIQUES_ARMENTIERES,
 }

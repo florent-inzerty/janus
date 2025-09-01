@@ -1042,7 +1042,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 print("Copie réussie pour ligne_1175.")
                 print(ligne_1175)
                 logging.info("Copie réussie pour ligne_1175.")
-                logging.info(ligne_1175)
                 logging.info("Copie réussie pour rubrique_total_BETHUNE_1425_Base.")
                 logging.info(rubrique_total_BETHUNE_1425_Base)
 
@@ -1075,7 +1074,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         print("Toutes les lignes avec 'Total' dans rubrique_total:")
         for idx, row in rubrique_total.iterrows():
             print(f"Index {idx}: Rubrique='{row['Rubrique']}', Intitulé='{row['Intitulé']}', à Payer={row['à Payer  ']}")
-        print("=== FIN DEBUG COMPLET rubrique_total ===")
+        print("=== FIN DEBUG COMPLET ===")
 
         # Afficher les valeurs importées
         print("Rubrique Total :")
@@ -1223,6 +1222,69 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 l1175_value = ligne_1175.iloc[0]['A Remplir']
                 resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('Heures visites médicales', case=False, na=False), 'A Remplir'] = l1175_value
 
+        if self.selected_text == "ARMENTIERES":
+            # Logique spécifique pour corriger les totaux d'Armentieres
+            print("Correction spécifique des totaux pour Armentieres")
+            logging.info("Correction spécifique des totaux pour Armentieres")
+            
+            # Sauvegarder la valeur originale du "Fiscal" depuis rubrique_total_Fiscal AVANT toute modification
+            valeur_fiscal_originale = None
+            if len(rubrique_total_Fiscal) == 1:
+                valeur_fiscal_originale = rubrique_total_Fiscal.iloc[0]['à Payer  ']
+                print(f"Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: {valeur_fiscal_originale}")
+                logging.info(f"Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: {valeur_fiscal_originale}")
+            
+            # Corriger le total "BRUT à payer" avec la valeur du "Brut total"
+            if not ligne_BRUT_a_payer.empty and not resultat_fusion_2.empty:
+                # Récupérer la valeur "Brut total" depuis resultat_fusion_2
+                brut_total_line = resultat_fusion_2[resultat_fusion_2['Titre'] == 'Brut total']
+                if not brut_total_line.empty:
+                    brut_total_value = brut_total_line.iloc[0]['A Remplir']
+                    ligne_BRUT_a_payer.loc[:, 'A Remplir'] = brut_total_value
+                    # Mettre à jour aussi dans resultat_fusion_3
+                    resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('BRUT à payer', case=False, na=False), 'A Remplir'] = brut_total_value
+                    print(f"BRUT à payer corrigé pour Armentieres: {brut_total_value}")
+                    logging.info(f"BRUT à payer corrigé pour Armentieres: {brut_total_value}")
+            
+            # Corriger le total "Fiscal" avec la valeur originale depuis le fichier Excel
+            if not ligne_Fiscal.empty and valeur_fiscal_originale is not None:
+                ligne_Fiscal.loc[:, 'A Remplir'] = valeur_fiscal_originale
+                # Mettre à jour aussi dans resultat_fusion_3
+                resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('Fiscal', case=False, na=False), 'A Remplir'] = valeur_fiscal_originale
+                print(f"Total Fiscal corrigé pour Armentieres avec la valeur originale: {valeur_fiscal_originale}")
+                logging.info(f"Total Fiscal corrigé pour Armentieres avec la valeur originale: {valeur_fiscal_originale}")
+
+        if self.selected_text == "CHARLEVILLE":
+            # Logique spécifique pour corriger les totaux de Charleville
+            print("Correction spécifique des totaux pour Charleville")
+            logging.info("Correction spécifique des totaux pour Charleville")
+            
+            # Sauvegarder la valeur originale du "Fiscal" depuis rubrique_total_Fiscal AVANT toute modification
+            valeur_fiscal_originale = None
+            if len(rubrique_total_Fiscal) == 1:
+                valeur_fiscal_originale = rubrique_total_Fiscal.iloc[0]['à Payer  ']
+                print(f"Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: {valeur_fiscal_originale}")
+                logging.info(f"Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: {valeur_fiscal_originale}")
+            
+            # Corriger le total "BRUT à payer" avec la valeur du "Brut total"
+            if not ligne_BRUT_a_payer.empty and not resultat_fusion_2.empty:
+                # Récupérer la valeur "Brut total" depuis resultat_fusion_2
+                brut_total_line = resultat_fusion_2[resultat_fusion_2['Titre'] == 'Brut total']
+                if not brut_total_line.empty:
+                    brut_total_value = brut_total_line.iloc[0]['A Remplir']
+                    ligne_BRUT_a_payer.loc[:, 'A Remplir'] = brut_total_value
+                    # Mettre à jour aussi dans resultat_fusion_3
+                    resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('BRUT à payer', case=False, na=False), 'A Remplir'] = brut_total_value
+                    print(f"BRUT à payer corrigé pour Charleville: {brut_total_value}")
+                    logging.info(f"BRUT à payer corrigé pour Charleville: {brut_total_value}")
+            
+            # Corriger le total "Fiscal" avec la valeur originale depuis le fichier Excel
+            if not ligne_Fiscal.empty and valeur_fiscal_originale is not None:
+                ligne_Fiscal.loc[:, 'A Remplir'] = valeur_fiscal_originale
+                # Mettre à jour aussi dans resultat_fusion_3
+                resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('Fiscal', case=False, na=False), 'A Remplir'] = valeur_fiscal_originale
+                print(f"Total Fiscal corrigé pour Charleville avec la valeur originale: {valeur_fiscal_originale}")
+                logging.info(f"Total Fiscal corrigé pour Charleville avec la valeur originale: {valeur_fiscal_originale}")
 
         # Afficher les données de 'resultat_fusion_3' après intégration
         # print("resultat_fusion_3 après intégration :")
@@ -1555,29 +1617,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 
-        # Ajouter une valeur à toutes les lignes de la colonne 'Rubr' dans rubriques_en_doublon_LE NOM DE L'AGENCE : 
-        #for rubrique, valeurs in rubriques_en_doublon_ASNIERES.items():
-        #for rubrique, valeurs in self.rubriques_en_doublon_selectionnees.items():
-        #    # Séparer les valeurs en deux listes distinctes
-        #    valeur_1, valeur_2, valeur_3, valeur_4 = valeurs
-        #    for index, row in resultat_fusion_mat_rub_doublons_null.iterrows():
-        #        if row['Rubr'] == rubrique:
-        #            # Attribuer les valeurs à la colonne 'A Remplir' en fonction de la parité
-        #            if index % 2 == 0:
-        #                resultat_fusion_mat_rub_doublons_null.loc[index, 'A Remplir'] = resultat_fusion_mat_rub_doublons_null.loc[index, valeur_1] # valeur_1
-        #                resultat_fusion_mat_rub_doublons_null.loc[index, 'Rubr'] += ' ' + valeur_3
-        #            else:
-        #                resultat_fusion_mat_rub_doublons_null.loc[index, 'A Remplir'] = resultat_fusion_mat_rub_doublons_null.loc[index, valeur_2] # valeur_2
-        #                resultat_fusion_mat_rub_doublons_null.loc[index, 'Rubr'] += ' ' + valeur_4
-
-        
-        # Debug
-        # Maintenant, vous avez la liste de lignes filtrées prêtes à être utilisées pour écrire dans le fichier final
-        
-        #print("Lignes filtrées pour les doublons :")
-        #print(resultat_fusion_mat_rub_doublons_null)
-        
-
         ###########################################
         #   Cas specifique des lignes en triplon  # 
         ###########################################       
@@ -1624,8 +1663,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 logging.info("Valeur 3:", valeur_3)
 
         else:
-            print("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
-            logging.info("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
+            print("Aucune rubrique en triplon n'a été trouvée pour l'agence sélectionnée.")
+            logging.info("Aucune rubrique en triplon n'a été trouvée pour l'agence sélectionnée.")
 
         # Accéder à la première ligne de resultat_fusion_mat_rub_triples
         # Remplace sur chaque ligne, la valeur de 'Rubr' (4 digits) par la liste dipo dans gestion_des_agences.py rubriques_en_triplon_*, plus particulierement : '5110': ['5110 base', '5110 salarié montant', '5110 à retenir'],
@@ -1641,8 +1680,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 logging.info("Résultat après remplacement :")
                 logging.info(resultat_fusion_mat_rub_triples)
         else:
-            print("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
-            logging.info("Aucune rubrique en triple n'a été trouvée pour l'agence sélectionnée.")
+            print("Aucune rubrique en triplon n'a été trouvée pour l'agence sélectionnée.")
+            logging.info("Aucune rubrique en triplon n'a été trouvée pour l'agence sélectionnée.")
 
         # TEST = 
         # Vérifier si self.rubriques_en_triplon_2_selectionnees est défini
@@ -1756,13 +1795,58 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     
                     # Chercher la ligne correspondante dans le fichier Excel
                     ligne_trouvee = False
-                    for row_idx in range(1, ws.max_row + 1):
-                        cell_value = ws.cell(row=row_idx, column=1).value
-                        if cell_value and str(cell_value).strip() == str(rubr_ou_titre).strip():
-                            ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
-                            print(f"✅ Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour '{rubr_ou_titre}'")
-                            ligne_trouvee = True
-                            break
+                    
+                    # Logique spéciale pour Armentieres - recherche plus précise
+                    if self.selected_text == "ARMENTIERES":
+                        if 'BRUT à payer' in str(row['Titre']):
+                            # Chercher spécifiquement la ligne contenant "BRUT à payer"
+                            for row_idx in range(1, ws.max_row + 1):
+                                cell_value = ws.cell(row=row_idx, column=2).value  # Chercher dans la colonne 2 (Titre)
+                                if cell_value and 'BRUT à payer' in str(cell_value):
+                                    ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                    print(f"✅ ARMENTIERES - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'BRUT à payer'")
+                                    ligne_trouvee = True
+                                    break
+                        elif 'Fiscal' in str(row['Titre']) and 'BRUT' not in str(row['Titre']):
+                            # Chercher spécifiquement la ligne contenant "Fiscal" mais pas "BRUT"
+                            for row_idx in range(1, ws.max_row + 1):
+                                cell_value = ws.cell(row=row_idx, column=2).value  # Chercher dans la colonne 2 (Titre)
+                                if cell_value and 'Fiscal' in str(cell_value) and 'BRUT' not in str(cell_value):
+                                    ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                    print(f"✅ ARMENTIERES - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'Fiscal'")
+                                    ligne_trouvee = True
+                                    break
+                    
+                    # Logique spéciale pour Charleville - recherche plus précise
+                    elif self.selected_text == "CHARLEVILLE":
+                        if 'BRUT à payer' in str(row['Titre']):
+                            # Chercher spécifiquement la ligne contenant "BRUT à payer"
+                            for row_idx in range(1, ws.max_row + 1):
+                                cell_value = ws.cell(row=row_idx, column=2).value  # Chercher dans la colonne 2 (Titre)
+                                if cell_value and 'BRUT à payer' in str(cell_value):
+                                    ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                    print(f"✅ CHARLEVILLE - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'BRUT à payer'")
+                                    ligne_trouvee = True
+                                    break
+                        elif 'Fiscal' in str(row['Titre']) and 'BRUT' not in str(row['Titre']):
+                            # Chercher spécifiquement la ligne contenant "Fiscal" mais pas "BRUT"
+                            for row_idx in range(1, ws.max_row + 1):
+                                cell_value = ws.cell(row=row_idx, column=2).value  # Chercher dans la colonne 2 (Titre)
+                                if cell_value and 'Fiscal' in str(cell_value) and 'BRUT' not in str(cell_value):
+                                    ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                    print(f"✅ CHARLEVILLE - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'Fiscal'")
+                                    ligne_trouvee = True
+                                    break
+                    
+                    # Logique normale pour les autres cas
+                    if not ligne_trouvee:
+                        for row_idx in range(1, ws.max_row + 1):
+                            cell_value = ws.cell(row=row_idx, column=1).value
+                            if cell_value and str(cell_value).strip() == str(rubr_ou_titre).strip():
+                                ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                print(f"✅ Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour '{rubr_ou_titre}'")
+                                ligne_trouvee = True
+                                break
                     
                     if not ligne_trouvee:
                         print(f"❌ Ligne non trouvée pour '{rubr_ou_titre}'")
