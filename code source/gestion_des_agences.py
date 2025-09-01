@@ -362,6 +362,76 @@ rubriques_en_triplon_2_CARVIN = {
     '5110 à retenir' : 'à Retenir  ',
 }
 
+# Correspondances pour l'agence de CAMBRAI
+CORRESPONDANCES_CAMBRAI = {
+    '1110': 'Base   ',
+    '1120': 'Base   ',
+    '1130': 'Base   ',
+    '1170': 'Base   ',
+    '1175': 'Base   ',
+    '1200': 'Base   ',
+    '1265': 'Base   ',
+    '1900': 'à Payer  ',
+    '1910': 'à Payer  ',
+    '3005': 'Mont_Base ',
+    '3006': 'Mont_Base ',
+    '3007': 'Mont_Base ',
+    '3031': 'Patronal Mont',
+    '3050': 'Mont_Base ',
+    '3081': 'Mont_Base ',
+    '3101': 'Mont_Base ',
+    '3201': 'Mont_Base ',
+    '3202': 'Mont_Base ',
+    '3208': 'Mont_Base ',
+    '3401': 'Mont_Base ',
+    '3402': 'Mont_Base ',
+    '3403': 'Mont_Base ',
+    '3404': 'Mont_Base ',
+    '3601': 'Mont_Base ',
+    '3750': 'Mont_Base ',
+    '4072': 'à Payer  ',
+    '5100': 'à Retenir  ',
+    '5102': 'à Retenir  ',
+    '5103': 'à Retenir  ',
+    '5230': 'à Retenir  ',
+    '6000': 'à Retenir  ',
+    '6011': 'à Retenir  ',
+}
+
+rubriques_en_doublon_CAMBRAI = {
+    '3082': ['3082', '3082 base', '3082 patronal montant'],
+    '5100': ['5100', '5100 base', '5100 à retenir'],
+    '5102': ['5102', '5102 base', '5102 à retenir'],
+    '5103': ['5103', '5103 base', '5103 à retenir'],
+    '3602': ['3602', '3602 base', '3602 à retenir'],
+    '4076': ['4076', '4076 base', '4076 à payer'],
+}
+
+rubriques_en_doublon_2_CAMBRAI = {
+    '3082 base': 'Mont_Base ',
+    '3082 patronal montant': 'Patronal Mont',
+    '5100 base': 'Mont_Base ',
+    '5100 à retenir': 'à Retenir  ',
+    '5102 base': 'Mont_Base ',
+    '5102 à retenir': 'à Retenir  ',
+    '5103 base': 'Mont_Base ',
+    '5103 à retenir': 'à Retenir  ',
+    '3602 base': 'Mont_Base ',
+    '3602 à retenir': 'à Retenir  ',
+    '4076 base': 'Mont_Base ',
+    '4076 à payer': 'à Payer  ',
+}
+
+rubriques_en_triplon_CAMBRAI = {
+    '5110': ['5110 base', '5110 salarié montant', '5110 à retenir'],
+}
+
+rubriques_en_triplon_2_CAMBRAI = {
+    '5110 base': 'Mont_Base ',
+    '5110 salarié montant': 'Salarié Mont',
+    '5110 à retenir': 'à Retenir  ',
+}
+
 CORRESPONDANCES_CHARLEVILLE = {
     '1110': 'Base   ',
     '1120': 'Base   ',
@@ -1546,6 +1616,7 @@ CORRESPONDANCES_AGENCES = {
     'ARMENTIERES': CORRESPONDANCES_ARMENTIERES,
     'ASNIERES': CORRESPONDANCES_ASNIERES,
     'BETHUNE': CORRESPONDANCES_BETHUNE,
+    'CAMBRAI': CORRESPONDANCES_CAMBRAI,
     'CARVIN': CORRESPONDANCES_CARVIN,
     'CHARLEVILLE': CORRESPONDANCES_CHARLEVILLE,
     'CRETEIL': CORRESPONDANCES_CRETEIL,

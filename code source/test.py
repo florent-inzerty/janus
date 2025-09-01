@@ -1382,6 +1382,38 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 print(f"Total Fiscal corrigé pour Bethune avec la valeur originale: {valeur_fiscal_originale}")
                 logging.info(f"Total Fiscal corrigé pour Bethune avec la valeur originale: {valeur_fiscal_originale}")
 
+        if self.selected_text == "CAMBRAI":
+            # Logique spécifique pour corriger les totaux de Cambrai - même correction que les autres agences
+            print("Correction spécifique des totaux pour Cambrai")
+            logging.info("Correction spécifique des totaux pour Cambrai")
+            
+            # Sauvegarder la valeur originale du "Fiscal" depuis rubrique_total_Fiscal AVANT toute modification
+            valeur_fiscal_originale = None
+            if len(rubrique_total_Fiscal) == 1:
+                valeur_fiscal_originale = rubrique_total_Fiscal.iloc[0]['à Payer  ']
+                print(f"Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: {valeur_fiscal_originale}")
+                logging.info(f"Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: {valeur_fiscal_originale}")
+            
+            # Corriger le total "BRUT à payer" avec la valeur du "Brut total"
+            if not ligne_BRUT_a_payer.empty and not resultat_fusion_2.empty:
+                # Récupérer la valeur "Brut total" depuis resultat_fusion_2
+                brut_total_line = resultat_fusion_2[resultat_fusion_2['Titre'] == 'Brut total']
+                if not brut_total_line.empty:
+                    brut_total_value = brut_total_line.iloc[0]['A Remplir']
+                    ligne_BRUT_a_payer.loc[:, 'A Remplir'] = brut_total_value
+                    # Mettre à jour aussi dans resultat_fusion_3
+                    resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('BRUT à payer', case=False, na=False), 'A Remplir'] = brut_total_value
+                    print(f"BRUT à payer corrigé pour Cambrai: {brut_total_value}")
+                    logging.info(f"BRUT à payer corrigé pour Cambrai: {brut_total_value}")
+            
+            # Corriger le total "Fiscal" avec la valeur originale depuis le fichier Excel
+            if not ligne_Fiscal.empty and valeur_fiscal_originale is not None:
+                ligne_Fiscal.loc[:, 'A Remplir'] = valeur_fiscal_originale
+                # Mettre à jour aussi dans resultat_fusion_3
+                resultat_fusion_3.loc[resultat_fusion_3['Titre'].str.contains('Fiscal', case=False, na=False), 'A Remplir'] = valeur_fiscal_originale
+                print(f"Total Fiscal corrigé pour Cambrai avec la valeur originale: {valeur_fiscal_originale}")
+                logging.info(f"Total Fiscal corrigé pour Cambrai avec la valeur originale: {valeur_fiscal_originale}")
+
         # Afficher les données de 'resultat_fusion_3' après intégration
         # print("resultat_fusion_3 après intégration :")
         # print(resultat_fusion_3)
@@ -1974,6 +2006,27 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                                 if cell_value and 'Fiscal' in str(cell_value) and 'BRUT' not in str(cell_value):
                                     ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
                                     print(f"✅ BETHUNE - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'Fiscal'")
+                                    ligne_trouvee = True
+                                    break
+                    
+                    # Logique spéciale pour Cambrai - recherche plus précise
+                    elif self.selected_text == "CAMBRAI":
+                        if 'BRUT à payer' in str(row['Titre']):
+                            # Chercher spécifiquement la ligne contenant "BRUT à payer"
+                            for row_idx in range(1, ws.max_row + 1):
+                                cell_value = ws.cell(row=row_idx, column=2).value  # Chercher dans la colonne 2 (Titre)
+                                if cell_value and 'BRUT à payer' in str(cell_value):
+                                    ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                    print(f"✅ CAMBRAI - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'BRUT à payer'")
+                                    ligne_trouvee = True
+                                    break
+                        elif 'Fiscal' in str(row['Titre']) and 'BRUT' not in str(row['Titre']):
+                            # Chercher spécifiquement la ligne contenant "Fiscal" mais pas "BRUT"
+                            for row_idx in range(1, ws.max_row + 1):
+                                cell_value = ws.cell(row=row_idx, column=2).value  # Chercher dans la colonne 2 (Titre)
+                                if cell_value and 'Fiscal' in str(cell_value) and 'BRUT' not in str(cell_value):
+                                    ws.cell(row=row_idx, column=3, value=valeur_a_ecrire)
+                                    print(f"✅ CAMBRAI - Écrit '{valeur_a_ecrire}' à la ligne {row_idx} pour 'Fiscal'")
                                     ligne_trouvee = True
                                     break
                     
