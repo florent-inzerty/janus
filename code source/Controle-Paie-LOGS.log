@@ -31556,3 +31556,393 @@ Index: []
 2025-09-01 16:29:51,129 - INFO - /home/florent/Téléchargements/cambrai/Contrôle Paie Cambrai.xlsx
 2025-09-01 16:29:51,227 - INFO - la seconde ecriture du fichier a ete realise avec succes !
 2025-09-01 16:29:51,228 - INFO - /home/florent/Téléchargements/cambrai/Contrôle Paie Cambrai.xlsx
+2025-09-01 16:36:45,233 - INFO - Définir la fonction appelée lorsqu'un nouvel élément est sélectionné dans la combobox pour le choix des agences
+2025-09-01 16:36:45,262 - INFO - Lancement du programme
+2025-09-01 16:36:46,056 - INFO - Continuer button clicked
+2025-09-01 16:36:47,872 - INFO - Selected Text:
+2025-09-01 16:36:47,872 - INFO - CREIL
+2025-09-01 16:36:47,872 - INFO - self.correspondances_selectionnees
+2025-09-01 16:36:47,872 - INFO - {'1110': 'Base   ', '1120': 'Base   ', '1130': 'Base   ', '1170': 'Base   ', '1175': 'Base   ', '1202': 'Base   ', '1235': 'Base   ', '1900': 'à Payer  ', '1910': 'à Payer  ', '3005': 'Mont_Base ', '3006': 'Mont_Base ', '3007': 'Mont_Base ', '3031': 'Patronal Mont', '3050': 'Mont_Base ', '3081': 'Mont_Base ', '3101': 'Mont_Base ', '3201': 'Mont_Base ', '3202': 'Mont_Base ', '3208': 'Mont_Base ', '3401': 'Mont_Base ', '3402': 'Mont_Base ', '3403': 'Mont_Base ', '3404': 'Mont_Base ', '3601': 'Mont_Base ', '3750': 'Mont_Base ', '4072': 'à Payer  ', '5101': 'à Retenir  ', '5230': 'à Retenir  ', '6000': 'à Retenir  ', '6011': 'à Retenir  '}
+2025-09-01 16:36:47,872 - INFO - rubriques_en_triplon_selectionnees
+2025-09-01 16:36:47,872 - INFO - {'5110': ['5110 base', '5110 salarié montant', '5110 à retenir']}
+2025-09-01 16:36:47,872 - INFO - rubriques_en_triplon_2_selectionnees
+2025-09-01 16:36:47,872 - INFO - {'5110 base': 'Mont_Base ', '5110 salarié montant': 'Salarié Mont', '5110 à retenir': 'à Retenir  '}
+2025-09-01 16:36:47,872 - INFO - rubriques_en_doublon selectionnees
+2025-09-01 16:36:47,872 - INFO - {'3082': ['3082', '3082 base', '3082 patronal montant'], '5100': ['5100', '5100 base', '5100 à retenir'], '5102': ['5102', '5102 base', '5102 à retenir'], '5103': ['5103', '5103 base', '5103 à retenir'], '3602': ['3602', '3602 base', '3602 à retenir'], '4076': ['4076', '4076 base', '4076 à payer']}
+2025-09-01 16:36:47,873 - INFO - rubriques_en_doublon_2 selectionnees
+2025-09-01 16:36:47,873 - INFO - {'3082 base': 'Mont_Base ', '3082 patronal montant': 'Patronal Mont', '5100 base': 'Mont_Base ', '5100 à retenir': 'à Retenir  ', '5102 base': 'Mont_Base ', '5102 à retenir': 'à Retenir  ', '5103 base': 'Mont_Base ', '5103 à retenir': 'à Retenir  ', '3602 base': 'Mont_Base ', '3602 à retenir': 'à Retenir  ', '4076 base': 'Mont_Base ', '4076 à payer': 'à Payer  '}
+2025-09-01 16:36:57,718 - INFO - Executer pressed
+2025-09-01 16:36:57,718 - INFO - #############################
+2025-09-01 16:36:57,718 - INFO - # Operations sur les data   #
+2025-09-01 16:36:57,718 - INFO - #############################
+2025-09-01 16:36:57,787 - INFO - #################################
+2025-09-01 16:36:57,787 - INFO - # Fusion de COTISATION et Final #
+2025-09-01 16:36:57,788 - INFO - #################################
+2025-09-01 16:36:57,791 - INFO - Fusion de COTISATION et Final OK!
+2025-09-01 16:36:57,791 - INFO - ##############################################
+2025-09-01 16:36:57,791 - INFO - # Ajout des data de 'Matricule' a la fusion  #
+2025-09-01 16:36:57,791 - INFO - ##############################################
+2025-09-01 16:36:57,803 - INFO - Ajout des data de 'Matricule' a la fusion OK!
+2025-09-01 16:36:57,803 - INFO -     Rubr                                              Titre Mont_Base  Patronal Mont Salarié Mont     Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées A Remplir
+0   3005                        URSSAF mal mat inv dec/brut    7696.57        982.85        30.79      NaN        NaN       NaN        NaN              NaN       NaN
+1   3006  URSSAF alloc fam >160% (mettre le signe - si n...        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+2   3007                               URSSAF Maladie >250%        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+3   3031                                URSSAF Taux AT/Brut    7696.57        232.44                   NaN        NaN       NaN        NaN              NaN       NaN
+4   3050                                 Versement mobilité        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+5   3081                          Réduction générale URSSAF   -1227.05      -1227.05                   NaN        NaN       NaN        NaN              NaN       NaN
+6   3082                                 Exonération URSSAF    -195.85                     -22.15      NaN        NaN       NaN        NaN              NaN       NaN
+7   3082                                 Exonération URSSAF    -195.85                     -22.15      NaN        NaN       NaN        NaN              NaN       NaN
+8   3750                      Forfait Social sur Prévoyance      45.79          3.66                   NaN        NaN       NaN        NaN              NaN       NaN
+9   3101                     Réduction générale Pole Emploi     -222.9        -222.9                   NaN        NaN       NaN        NaN              NaN       NaN
+10  5100                            CSG CRDS non déductible    7415.25                     215.04      NaN        NaN       NaN        NaN              NaN       NaN
+11  5102                     CSG non déductible sur Hrs sup     192.42                      18.67      NaN        NaN       NaN        NaN              NaN       NaN
+12  5103                        CSG CRDS activité partielle        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+13  3201                                 Retraite tranche 1    7696.57        363.28       242.44      NaN        NaN       NaN        NaN              NaN       NaN
+14  3202  Retraite tranche 2 (mettre le signe - si négatif)        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+15  3208                        Réduction générale Retraite    -330.95       -330.95                   NaN        NaN       NaN        NaN              NaN       NaN
+16  3401                              Prévoyance < 414h tr1    5424.75         28.15        24.47      NaN        NaN       NaN        NaN              NaN       NaN
+17  3402  Prévoyance < 414h tr2 (mettre le signe - si né...        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+18  3403                              Prévoyance > 414h tr1    2271.82         14.83        12.88      NaN        NaN       NaN        NaN              NaN       NaN
+19  3404  Prévoyance > 414h tr2 (mettre le signe - si né...        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+20  3601                                 Siaci St Honoré FG        517         12.61                   NaN        NaN       NaN        NaN              NaN       NaN
+21  3602                           Siaci St Honoré Mutuelle        152         11.55        11.55      NaN        NaN       NaN        NaN              NaN       NaN
+22  5110                    Impôt prélevé à la source (PAS)    5440.44                                 NaN        NaN       NaN        NaN              NaN       NaN
+23  5110                    Impôt prélevé à la source (PAS)    5440.44                                 NaN        NaN       NaN        NaN              NaN       NaN
+24  1110                                    Heures normales        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+25  1120                                    Heures sup 125%        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+26  1130                                    Heures sup 150%        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+27  1170                                        Heures JFNT        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+28  1175                                          Heures VM        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+29  1202                                    Heures de pause        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+30  1235                                    Heures normales        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+31  1900                                                IFM        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+32  1910                                                ICP        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+33  3602                           Siaci St Honoré mutuelle        152         11.55        11.55      NaN        NaN       NaN        NaN              NaN       NaN
+34  4072                                        Intempéries        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+35  4076                                 Activité partielle        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+36  4076                                 Activité partielle        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+37  5100                            CSG CRDS non déductible    7415.25                     215.04      NaN        NaN       NaN        NaN              NaN       NaN
+38  5101                       CSG CRDS non déductible intp        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+39  5102                    CSG CRDS non déductible Hrs sup     192.42                      18.67      NaN        NaN       NaN        NaN              NaN       NaN
+40  5103                       CSG CRDS activité partielle         NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+41  5110                          Impôt prélevé à la source    5440.44                                 NaN        NaN       NaN        NaN              NaN       NaN
+42  5230                   Ticket restaurant part salariale        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+43  6000                                        Acompte CIC        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+44  6011                                       Saisie arrêt        NaN           NaN          NaN      NaN        NaN       NaN        NaN              NaN       NaN
+4    NaN                                                NaN        NaN           NaN          NaN  7696.57    7696.57              6378.64            517.0       NaN
+2025-09-01 16:36:57,825 - INFO - ###########################################
+2025-09-01 16:36:57,825 - INFO - # Ajout des data de 'Rubrique' la fusion  #
+2025-09-01 16:36:57,825 - INFO - ###########################################
+2025-09-01 16:36:57,849 - INFO - Ajout des data de 'Rubrique' la fusion OK!
+2025-09-01 16:36:57,849 - INFO -     Rubr                                              Titre Mont_Base  Patronal Mont Salarié Mont     Brut  ...  Net Payer Hrs Travaillées  Base     à Payer   à Retenir   A Remplir
+0   3005                        URSSAF mal mat inv dec/brut    7696.57        982.85        30.79      NaN  ...        NaN             NaN -7696.57                 -30.79       NaN
+1   3006  URSSAF alloc fam >160% (mettre le signe - si n...        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+2   3007                               URSSAF Maladie >250%        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+3   3031                                URSSAF Taux AT/Brut    7696.57        232.44                   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+4   3050                                 Versement mobilité        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+5   3081                          Réduction générale URSSAF   -1227.05      -1227.05                   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+6   3082                                 Exonération URSSAF    -195.85                     -22.15      NaN  ...        NaN             NaN   195.85      22.15                   NaN
+7   3082                                 Exonération URSSAF    -195.85                     -22.15      NaN  ...        NaN             NaN   195.85      22.15                   NaN
+8   3750                      Forfait Social sur Prévoyance      45.79          3.66                   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+9   3101                     Réduction générale Pole Emploi     -222.9        -222.9                   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+10  5100                            CSG CRDS non déductible    7415.25                     215.04      NaN  ...        NaN             NaN -7415.25                -215.04       NaN
+11  5102                     CSG non déductible sur Hrs sup     192.42                      18.67      NaN  ...        NaN             NaN  -192.42                 -18.67       NaN
+12  5103                        CSG CRDS activité partielle        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+13  3201                                 Retraite tranche 1    7696.57        363.28       242.44      NaN  ...        NaN             NaN -7696.57                -242.44       NaN
+14  3202  Retraite tranche 2 (mettre le signe - si négatif)        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+15  3208                        Réduction générale Retraite    -330.95       -330.95                   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+16  3401                              Prévoyance < 414h tr1    5424.75         28.15        24.47      NaN  ...        NaN             NaN -5424.75                 -24.47       NaN
+17  3402  Prévoyance < 414h tr2 (mettre le signe - si né...        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+18  3403                              Prévoyance > 414h tr1    2271.82         14.83        12.88      NaN  ...        NaN             NaN -2271.82                 -12.88       NaN
+19  3404  Prévoyance > 414h tr2 (mettre le signe - si né...        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+20  3601                                 Siaci St Honoré FG        517         12.61                   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+21  3602                           Siaci St Honoré Mutuelle        152         11.55        11.55      NaN  ...        NaN             NaN     -152                 -11.55       NaN
+22  5110                    Impôt prélevé à la source (PAS)    5440.44                                 NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+23  5110                    Impôt prélevé à la source (PAS)    5440.44                                 NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+24  1110                                    Heures normales        NaN           NaN          NaN      NaN  ...        NaN             NaN      504    6146.72                   NaN
+25  1120                                    Heures sup 125%        NaN           NaN          NaN      NaN  ...        NaN             NaN       13     195.85                   NaN
+26  1130                                    Heures sup 150%        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+27  1170                                        Heures JFNT        NaN           NaN          NaN      NaN  ...        NaN             NaN       28     339.92                   NaN
+28  1175                                          Heures VM        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+29  1202                                    Heures de pause        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+30  1235                                    Heures normales        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+31  1900                                                IFM        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+32  1910                                                ICP        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+33  3602                           Siaci St Honoré mutuelle        152         11.55        11.55      NaN  ...        NaN             NaN     -152                 -11.55       NaN
+34  4072                                        Intempéries        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+35  4076                                 Activité partielle        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+36  4076                                 Activité partielle        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+37  5100                            CSG CRDS non déductible    7415.25                     215.04      NaN  ...        NaN             NaN -7415.25                -215.04       NaN
+38  5101                       CSG CRDS non déductible intp        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+39  5102                    CSG CRDS non déductible Hrs sup     192.42                      18.67      NaN  ...        NaN             NaN  -192.42                 -18.67       NaN
+40  5103                       CSG CRDS activité partielle         NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+41  5110                          Impôt prélevé à la source    5440.44                                 NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+42  5230                   Ticket restaurant part salariale        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+43  6000                                        Acompte CIC        NaN           NaN          NaN      NaN  ...        NaN             NaN                            -300       NaN
+44  6011                                       Saisie arrêt        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+45   NaN                                                NaN        NaN           NaN          NaN  7696.57  ...    6378.64           517.0      NaN        NaN         NaN       NaN
+
+[46 rows x 14 columns]
+2025-09-01 16:36:57,861 - INFO - Cas specifique des lignes qui ne commencent pas par 4 digits 
+2025-09-01 16:36:57,861 - INFO - #########################################################################################
+2025-09-01 16:36:57,861 - INFO - #  'Brut total' 'Brut tranche A' 'Brut tranche B' 'Heures travaillées' et 'Net à payer' #
+2025-09-01 16:36:57,861 - INFO - #########################################################################################
+2025-09-01 16:36:57,883 - INFO - resultat_fusion_2
+2025-09-01 16:36:57,883 - INFO -    Rubr               Titre  A Remplir
+0  9900          Brut total        NaN
+1  9901      Brut tranche A        NaN
+2  9902      Brut tranche B        NaN
+3  9903  Heures travaillées        NaN
+4  9904         Net à payer        NaN
+2025-09-01 16:36:57,888 - INFO - ############################################################
+2025-09-01 16:36:57,888 - INFO - # Ligne 'Réduction Chg Tepa Pat' et 'Janus SAS (charges)'  #
+2025-09-01 16:36:57,888 - INFO - ############################################################
+2025-09-01 16:36:57,903 - INFO - resultat_fusion_4: 
+2025-09-01 16:36:57,903 - INFO -                       Rubr                Titre  A Remplir
+0  Agence patronal montant  Janus SAS (charges)        NaN
+2025-09-01 16:36:57,925 - INFO - cotisation_agence: 
+2025-09-01 16:36:57,925 - INFO -    Agence    Rubr         Intitule Nbr Mont_Base     % Salarié Mont  %.1 Patronal Mont  %.2 Total   Mont
+45      1  Agence  JANUS SAS CREIL                          1635.19            1322.05           2957.24
+2025-09-01 16:36:57,934 - INFO - resultat_fusion_4 avec la valeur de 'Patronal Mont' de 'cotisation_agence' : 
+2025-09-01 16:36:57,934 - INFO -                       Rubr                Titre  A Remplir
+0  Agence patronal montant  Janus SAS (charges)    1322.05
+2025-09-01 16:36:57,956 - INFO - cotisation_agence: 
+2025-09-01 16:36:57,956 - INFO -    Agence    Rubr         Intitule Nbr Mont_Base     % Salarié Mont  %.1 Patronal Mont  %.2 Total   Mont
+45      1  Agence  JANUS SAS CREIL                          1635.19            1322.05           2957.24
+2025-09-01 16:36:57,963 - INFO - resultat_fusion_4 avec la valeur de 'Patronal Mont' de 'cotisation_agence' : 
+2025-09-01 16:36:57,964 - INFO -                       Rubr                Titre  A Remplir
+0  Agence patronal montant  Janus SAS (charges)    1322.05
+2025-09-01 16:36:57,966 - INFO - ####################################################
+2025-09-01 16:36:57,966 - INFO - #    lignes 'BRUT à payer', 'Fiscal' et 'Net ***'  #
+2025-09-01 16:36:57,966 - INFO - ####################################################
+2025-09-01 16:36:57,977 - INFO - DEBUG COMPLET resultat_fusion_3:
+2025-09-01 16:36:57,977 - INFO -                Rubr                             Titre A Remplir
+55        1110 base                   Heures normales       NaN
+56        1120 base                   Heures sup 125%       NaN
+57        1130 base                   Heures sup 150%       NaN
+58        1170 base                       Heures JFNT       NaN
+59        1175 base                         Heures VM       NaN
+60        1202 base                   Heures de pause       NaN
+61        1235 base                   Heures normales       NaN
+62     1900 à payer                               IFM       NaN
+63     1910 à payer                               ICP       NaN
+64           Total                       BRUT à payer       NaN
+65   3602 à retenir          Siaci St Honoré mutuelle       NaN
+66     4072 à payer                       Intempéries       NaN
+67        4076 base                Activité partielle       NaN
+68     4076 à payer                Activité partielle       NaN
+69            Total                            Fiscal       NaN
+70   5100 à retenir           CSG CRDS non déductible       NaN
+71  5101 à retenir       CSG CRDS non déductible intp       NaN
+72   5102 à retenir   CSG CRDS non déductible Hrs sup       NaN
+73  5103 à retenir       CSG CRDS activité partielle        NaN
+74   5110 à retenir         Impôt prélevé à la source       NaN
+75   5230 à retenir  Ticket restaurant part salariale       NaN
+76   6000 à retenir                       Acompte CIC       NaN
+77   6011 à retenir                      Saisie arrêt       NaN
+78    Total à payer                           Net ***       NaN
+2025-09-01 16:36:57,997 - INFO - Afficher les valeurs importées
+2025-09-01 16:36:57,997 - INFO - Rubrique Total :
+2025-09-01 16:36:57,997 - INFO -    Agence Rubrique       Intitulé CptDeb CptCré Nbr Base    à Payer   à Retenir  
+8       1    Total    Brut    ***    NaN    NaN               7696.57            
+18      1    Total  Retenues  ***    NaN    NaN                           -897.24
+21      1    Total     Fiscal ***    NaN    NaN               6110.79            
+27      1    Total   Net (1)  ***    NaN    NaN               6678.64            
+30      1   Total   Non imposable    NaN    NaN                617.26     -533.71
+31      1    Total     Net    ***    NaN    NaN               6378.64            
+43    NaN    Total       Ecriture    NaN    NaN               8313.83    -8313.83
+2025-09-01 16:36:58,013 - INFO - Afficher les valeurs importées
+2025-09-01 16:36:58,013 - INFO - rubrique_total_Brut :
+2025-09-01 16:36:58,013 - INFO -   Agence Rubrique     Intitulé CptDeb CptCré Nbr Base    à Payer   à Retenir  
+8      1    Total  Brut    ***    NaN    NaN               7696.57            
+2025-09-01 16:36:58,017 - INFO - rubrique_total_Fiscal :
+2025-09-01 16:36:58,017 - INFO -    Agence Rubrique    Intitulé CptDeb CptCré Nbr Base    à Payer   à Retenir  
+21      1    Total  Fiscal ***    NaN    NaN               6110.79            
+2025-09-01 16:36:58,020 - INFO - rubrique_total_Net :
+2025-09-01 16:36:58,020 - INFO -    Agence Rubrique    Intitulé CptDeb CptCré Nbr Base    à Payer   à Retenir  
+31      1    Total  Net    ***    NaN    NaN               6378.64            
+2025-09-01 16:36:58,024 - INFO - Copie réussie pour BRUT à payer.
+2025-09-01 16:36:58,024 - INFO - Copie réussie pour Fiscal
+2025-09-01 16:36:58,024 - INFO - Copie réussie pour Total à payer: 6378.64
+2025-09-01 16:36:58,025 - INFO - Intégration Total à payer réussie avec la valeur: 6378.64
+2025-09-01 16:36:58,025 - INFO - Correction spécifique des totaux pour Creil
+2025-09-01 16:36:58,025 - INFO - Valeur Fiscal originale sauvegardée depuis rubrique_total_Fiscal: 6110.79
+2025-09-01 16:36:58,026 - INFO - BRUT à payer corrigé pour Creil: 7696.57
+2025-09-01 16:36:58,026 - INFO - Total Fiscal corrigé pour Creil avec la valeur originale: 6110.79
+2025-09-01 16:36:58,030 - INFO - resultat_fusion_3
+2025-09-01 16:36:58,030 - INFO -                Rubr                             Titre A Remplir
+55        1110 base                   Heures normales       NaN
+56        1120 base                   Heures sup 125%       NaN
+57        1130 base                   Heures sup 150%       NaN
+58        1170 base                       Heures JFNT       NaN
+59        1175 base                         Heures VM       NaN
+60        1202 base                   Heures de pause       NaN
+61        1235 base                   Heures normales       NaN
+62     1900 à payer                               IFM       NaN
+63     1910 à payer                               ICP       NaN
+64           Total                       BRUT à payer   7696.57
+65   3602 à retenir          Siaci St Honoré mutuelle       NaN
+66     4072 à payer                       Intempéries       NaN
+67        4076 base                Activité partielle       NaN
+68     4076 à payer                Activité partielle       NaN
+69            Total                            Fiscal   6110.79
+70   5100 à retenir           CSG CRDS non déductible       NaN
+71  5101 à retenir       CSG CRDS non déductible intp       NaN
+72   5102 à retenir   CSG CRDS non déductible Hrs sup       NaN
+73  5103 à retenir       CSG CRDS activité partielle        NaN
+74   5110 à retenir         Impôt prélevé à la source       NaN
+75   5230 à retenir  Ticket restaurant part salariale       NaN
+76   6000 à retenir                       Acompte CIC       NaN
+77   6011 à retenir                      Saisie arrêt       NaN
+78    Total à payer                           Net ***   6378.64
+2025-09-01 16:36:58,032 - INFO - ############################################################################
+2025-09-01 16:36:58,032 - INFO -  # Controle de l'agence afin d'avoir les equivalents 'Rubr' ==> 'A Remplir'#
+2025-09-01 16:36:58,032 - INFO - ############################################################################
+2025-09-01 16:36:58,056 - INFO - Remplace les données en fonction des correspondances de gestion_des_agences:
+2025-09-01 16:36:58,056 - INFO -     Rubr                                              Titre Mont_Base  Patronal Mont Salarié Mont     Brut  ...  Net Payer Hrs Travaillées  Base     à Payer   à Retenir   A Remplir
+0   3005                        URSSAF mal mat inv dec/brut    7696.57        982.85        30.79      NaN  ...        NaN             NaN -7696.57                 -30.79   7696.57
+1   3006  URSSAF alloc fam >160% (mettre le signe - si n...        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+2   3007                               URSSAF Maladie >250%        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+3   3031                                URSSAF Taux AT/Brut    7696.57        232.44                   NaN  ...        NaN             NaN      NaN        NaN         NaN    232.44
+4   3050                                 Versement mobilité        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+5   3081                          Réduction générale URSSAF   -1227.05      -1227.05                   NaN  ...        NaN             NaN      NaN        NaN         NaN  -1227.05
+6   3082                                 Exonération URSSAF    -195.85                     -22.15      NaN  ...        NaN             NaN   195.85      22.15                   NaN
+7   3082                                 Exonération URSSAF    -195.85                     -22.15      NaN  ...        NaN             NaN   195.85      22.15                   NaN
+8   3750                      Forfait Social sur Prévoyance      45.79          3.66                   NaN  ...        NaN             NaN      NaN        NaN         NaN     45.79
+9   3101                     Réduction générale Pole Emploi     -222.9        -222.9                   NaN  ...        NaN             NaN      NaN        NaN         NaN    -222.9
+10  5100                            CSG CRDS non déductible    7415.25                     215.04      NaN  ...        NaN             NaN -7415.25                -215.04       NaN
+11  5102                     CSG non déductible sur Hrs sup     192.42                      18.67      NaN  ...        NaN             NaN  -192.42                 -18.67       NaN
+12  5103                        CSG CRDS activité partielle        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+13  3201                                 Retraite tranche 1    7696.57        363.28       242.44      NaN  ...        NaN             NaN -7696.57                -242.44   7696.57
+14  3202  Retraite tranche 2 (mettre le signe - si négatif)        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+15  3208                        Réduction générale Retraite    -330.95       -330.95                   NaN  ...        NaN             NaN      NaN        NaN         NaN   -330.95
+16  3401                              Prévoyance < 414h tr1    5424.75         28.15        24.47      NaN  ...        NaN             NaN -5424.75                 -24.47   5424.75
+17  3402  Prévoyance < 414h tr2 (mettre le signe - si né...        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+18  3403                              Prévoyance > 414h tr1    2271.82         14.83        12.88      NaN  ...        NaN             NaN -2271.82                 -12.88   2271.82
+19  3404  Prévoyance > 414h tr2 (mettre le signe - si né...        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+20  3601                                 Siaci St Honoré FG        517         12.61                   NaN  ...        NaN             NaN      NaN        NaN         NaN       517
+21  3602                           Siaci St Honoré Mutuelle        152         11.55        11.55      NaN  ...        NaN             NaN     -152                 -11.55       NaN
+22  5110                    Impôt prélevé à la source (PAS)    5440.44                                 NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+23  5110                    Impôt prélevé à la source (PAS)    5440.44                                 NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+24  1110                                    Heures normales        NaN           NaN          NaN      NaN  ...        NaN             NaN      504    6146.72                   504
+25  1120                                    Heures sup 125%        NaN           NaN          NaN      NaN  ...        NaN             NaN       13     195.85                    13
+26  1130                                    Heures sup 150%        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+27  1170                                        Heures JFNT        NaN           NaN          NaN      NaN  ...        NaN             NaN       28     339.92                    28
+28  1175                                          Heures VM        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+29  1202                                    Heures de pause        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+30  1235                                    Heures normales        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+31  1900                                                IFM        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+32  1910                                                ICP        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+33  3602                           Siaci St Honoré mutuelle        152         11.55        11.55      NaN  ...        NaN             NaN     -152                 -11.55       NaN
+34  4072                                        Intempéries        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+35  4076                                 Activité partielle        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+36  4076                                 Activité partielle        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+37  5100                            CSG CRDS non déductible    7415.25                     215.04      NaN  ...        NaN             NaN -7415.25                -215.04       NaN
+38  5101                       CSG CRDS non déductible intp        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+39  5102                    CSG CRDS non déductible Hrs sup     192.42                      18.67      NaN  ...        NaN             NaN  -192.42                 -18.67       NaN
+40  5103                       CSG CRDS activité partielle         NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+41  5110                          Impôt prélevé à la source    5440.44                                 NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+42  5230                   Ticket restaurant part salariale        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+43  6000                                        Acompte CIC        NaN           NaN          NaN      NaN  ...        NaN             NaN                            -300      -300
+44  6011                                       Saisie arrêt        NaN           NaN          NaN      NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+45   NaN                                                NaN        NaN           NaN          NaN  7696.57  ...    6378.64           517.0      NaN        NaN         NaN       NaN
+
+[46 rows x 14 columns]
+2025-09-01 16:36:58,069 - INFO - ###########################################
+2025-09-01 16:36:58,070 - INFO - #   Cas specifique des lignes en doublon  #
+2025-09-01 16:36:58,070 - INFO - ###########################################
+2025-09-01 16:36:58,077 - INFO - Filtrer les lignes de resultat_fusion_mat_rub qui sont des doublons :
+2025-09-01 16:36:58,077 - INFO -     Rubr                            Titre Mont_Base  Patronal Mont Salarié Mont  Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées  Base    à Payer   à Retenir   A Remplir
+6   3082               Exonération URSSAF    -195.85                     -22.15   NaN        NaN       NaN        NaN              NaN   195.85     22.15                   NaN
+7   3082               Exonération URSSAF    -195.85                     -22.15   NaN        NaN       NaN        NaN              NaN   195.85     22.15                   NaN
+10  5100          CSG CRDS non déductible    7415.25                     215.04   NaN        NaN       NaN        NaN              NaN -7415.25               -215.04       NaN
+11  5102   CSG non déductible sur Hrs sup     192.42                      18.67   NaN        NaN       NaN        NaN              NaN  -192.42                -18.67       NaN
+12  5103      CSG CRDS activité partielle        NaN           NaN          NaN   NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+21  3602         Siaci St Honoré Mutuelle        152         11.55        11.55   NaN        NaN       NaN        NaN              NaN     -152                -11.55       NaN
+22  5110  Impôt prélevé à la source (PAS)    5440.44                              NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+23  5110  Impôt prélevé à la source (PAS)    5440.44                              NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+33  3602         Siaci St Honoré mutuelle        152         11.55        11.55   NaN        NaN       NaN        NaN              NaN     -152                -11.55       NaN
+35  4076               Activité partielle        NaN           NaN          NaN   NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+36  4076               Activité partielle        NaN           NaN          NaN   NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+37  5100          CSG CRDS non déductible    7415.25                     215.04   NaN        NaN       NaN        NaN              NaN -7415.25               -215.04       NaN
+39  5102  CSG CRDS non déductible Hrs sup     192.42                      18.67   NaN        NaN       NaN        NaN              NaN  -192.42                -18.67       NaN
+40  5103     CSG CRDS activité partielle         NaN           NaN          NaN   NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+41  5110        Impôt prélevé à la source    5440.44                              NaN        NaN       NaN        NaN              NaN      NaN       NaN         NaN       NaN
+2025-09-01 16:36:58,085 - INFO - Filtrer les lignes qui apparaissent 2 fois avec la même valeur dans la colonne Rubr: 
+2025-09-01 16:36:58,085 - INFO - Index(['5100', '3082', '5102', '5103', '3602', '4076'], dtype='object', name='Rubr')
+2025-09-01 16:36:58,103 - INFO - Remplacement de la valeur de A remplir dans le dictionnaire 1 : 
+2025-09-01 16:36:58,103 - INFO -                     Rubr               Titre Mont_Base  Patronal Mont Salarié Mont  Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées Base    à Payer   à Retenir   A Remplir
+6              3082 base  Exonération URSSAF    -195.85                     -22.15   NaN        NaN       NaN        NaN              NaN  195.85     22.15               -195.85
+7  3082 patronal montant  Exonération URSSAF    -195.85                     -22.15   NaN        NaN       NaN        NaN              NaN  195.85     22.15                      
+2025-09-01 16:36:58,116 - INFO - Remplacement de la valeur de A remplir dans le dictionnaire 2 : 
+2025-09-01 16:36:58,116 - INFO -               Rubr                    Titre Mont_Base  Patronal Mont Salarié Mont  Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées  Base    à Payer   à Retenir   A Remplir
+10       5100 base  CSG CRDS non déductible    7415.25                     215.04   NaN        NaN       NaN        NaN              NaN -7415.25               -215.04   7415.25
+37  5100 à retenir  CSG CRDS non déductible    7415.25                     215.04   NaN        NaN       NaN        NaN              NaN -7415.25               -215.04   -215.04
+2025-09-01 16:36:58,128 - INFO - Remplacement de la valeur de A remplir dans le dictionnaire 3 : 
+2025-09-01 16:36:58,128 - INFO -               Rubr                            Titre Mont_Base  Patronal Mont Salarié Mont  Brut  ...  Net Payer Hrs Travaillées  Base     à Payer   à Retenir   A Remplir
+11       5102 base   CSG non déductible sur Hrs sup     192.42                      18.67   NaN  ...        NaN             NaN  -192.42                 -18.67    192.42
+39  5102 à retenir  CSG CRDS non déductible Hrs sup     192.42                      18.67   NaN  ...        NaN             NaN  -192.42                 -18.67    -18.67
+
+[2 rows x 14 columns]
+2025-09-01 16:36:58,143 - INFO - Remplacement de la valeur de A remplir dans le dictionnaire 4 : 
+2025-09-01 16:36:58,143 - INFO -               Rubr                         Titre Mont_Base  Patronal Mont Salarié Mont  Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées Base    à Payer   à Retenir   A Remplir
+12       5103 base   CSG CRDS activité partielle        NaN           NaN          NaN   NaN        NaN       NaN        NaN              NaN     NaN       NaN         NaN       NaN
+40  5103 à retenir  CSG CRDS activité partielle         NaN           NaN          NaN   NaN        NaN       NaN        NaN              NaN     NaN       NaN         NaN       NaN
+2025-09-01 16:36:58,156 - INFO - Remplacement de la valeur de A remplir dans le dictionnaire 5 : 
+2025-09-01 16:36:58,156 - INFO -               Rubr                     Titre Mont_Base  Patronal Mont Salarié Mont  Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées Base    à Payer   à Retenir   A Remplir
+21       3602 base  Siaci St Honoré Mutuelle        152         11.55        11.55   NaN        NaN       NaN        NaN              NaN    -152                -11.55       152
+33  3602 à retenir  Siaci St Honoré mutuelle        152         11.55        11.55   NaN        NaN       NaN        NaN              NaN    -152                -11.55    -11.55
+2025-09-01 16:36:58,186 - INFO - rubrique_valeur_final
+2025-09-01 16:36:58,186 - INFO -                      Rubr                            Titre Mont_Base  Patronal Mont Salarié Mont  Brut  ...  Net Payer Hrs Travaillées  Base     à Payer   à Retenir   A Remplir
+0               3082 base               Exonération URSSAF    -195.85                     -22.15   NaN  ...        NaN             NaN   195.85      22.15               -195.85
+1   3082 patronal montant               Exonération URSSAF    -195.85                     -22.15   NaN  ...        NaN             NaN   195.85      22.15                      
+2               5100 base          CSG CRDS non déductible    7415.25                     215.04   NaN  ...        NaN             NaN -7415.25                -215.04   7415.25
+3          5100 à retenir          CSG CRDS non déductible    7415.25                     215.04   NaN  ...        NaN             NaN -7415.25                -215.04   -215.04
+4               5102 base   CSG non déductible sur Hrs sup     192.42                      18.67   NaN  ...        NaN             NaN  -192.42                 -18.67    192.42
+5          5102 à retenir  CSG CRDS non déductible Hrs sup     192.42                      18.67   NaN  ...        NaN             NaN  -192.42                 -18.67    -18.67
+6               5103 base      CSG CRDS activité partielle        NaN           NaN          NaN   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+7          5103 à retenir     CSG CRDS activité partielle         NaN           NaN          NaN   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+8               3602 base         Siaci St Honoré Mutuelle        152         11.55        11.55   NaN  ...        NaN             NaN     -152                 -11.55       152
+9          3602 à retenir         Siaci St Honoré mutuelle        152         11.55        11.55   NaN  ...        NaN             NaN     -152                 -11.55    -11.55
+10              4076 base               Activité partielle        NaN           NaN          NaN   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+11           4076 à payer               Activité partielle        NaN           NaN          NaN   NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+
+[12 rows x 14 columns]
+2025-09-01 16:36:58,194 - INFO - ###########################################
+2025-09-01 16:36:58,194 - INFO - #   Cas specifique des lignes en triplon  #
+2025-09-01 16:36:58,194 - INFO - ###########################################
+2025-09-01 16:36:58,200 - INFO - Lignes filtrées pour les triplons :
+2025-09-01 16:36:58,201 - INFO -     Rubr                            Titre Mont_Base  Patronal Mont Salarié Mont  Brut  Tranche A Tranche B  Net Payer  Hrs Travaillées Base    à Payer   à Retenir   A Remplir
+22  5110  Impôt prélevé à la source (PAS)    5440.44                              NaN        NaN       NaN        NaN              NaN     NaN       NaN         NaN       NaN
+23  5110  Impôt prélevé à la source (PAS)    5440.44                              NaN        NaN       NaN        NaN              NaN     NaN       NaN         NaN       NaN
+41  5110        Impôt prélevé à la source    5440.44                              NaN        NaN       NaN        NaN              NaN     NaN       NaN         NaN       NaN
+2025-09-01 16:36:58,207 - INFO - Valeur 1: 5110 base
+2025-09-01 16:36:58,207 - INFO - Valeur 2: 5110 salarié montant
+2025-09-01 16:36:58,207 - INFO - Valeur 3: 5110 à retenir
+2025-09-01 16:36:58,214 - INFO - Résultat après remplacement :
+2025-09-01 16:36:58,214 - INFO -                     Rubr                            Titre Mont_Base  Patronal Mont Salarié Mont  Brut  ...  Net Payer Hrs Travaillées  Base     à Payer   à Retenir   A Remplir
+22             5110 base  Impôt prélevé à la source (PAS)    5440.44                              NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+23  5110 salarié montant  Impôt prélevé à la source (PAS)    5440.44                              NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+41        5110 à retenir        Impôt prélevé à la source    5440.44                              NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+
+[3 rows x 14 columns]
+2025-09-01 16:36:58,220 - INFO - valeurs_triplon_2:
+2025-09-01 16:36:58,220 - INFO - ['Mont_Base ', 'Salarié Mont', 'à Retenir  ']
+2025-09-01 16:36:58,220 - INFO - Valeur 1 triplon 2: Mont_Base 
+2025-09-01 16:36:58,220 - INFO - Valeur 2 triplon 2: Salarié Mont
+2025-09-01 16:36:58,220 - INFO - Valeur 3 triplon 2: à Retenir  
+2025-09-01 16:36:58,227 - INFO - Résultat après remplacement triplon 2 :
+2025-09-01 16:36:58,227 - INFO -                     Rubr                            Titre Mont_Base  Patronal Mont Salarié Mont  Brut  ...  Net Payer Hrs Travaillées  Base     à Payer   à Retenir   A Remplir
+22             5110 base  Impôt prélevé à la source (PAS)    5440.44                              NaN  ...        NaN             NaN      NaN        NaN         NaN   5440.44
+23  5110 salarié montant  Impôt prélevé à la source (PAS)    5440.44                              NaN  ...        NaN             NaN      NaN        NaN         NaN          
+41        5110 à retenir        Impôt prélevé à la source    5440.44                              NaN  ...        NaN             NaN      NaN        NaN         NaN       NaN
+
+[3 rows x 14 columns]
+2025-09-01 16:36:58,233 - INFO - #############################################
+2025-09-01 16:36:58,233 - INFO - # Ecriture des donnes dans le fichier final #
+2025-09-01 16:36:58,233 - INFO - #############################################
+2025-09-01 16:36:58,443 - INFO - Sauvegarder les modifications dans le fichier Excel
+2025-09-01 16:36:58,443 - INFO - la premiere ecriture du fichier a ete realise avec succes !
+2025-09-01 16:36:58,443 - INFO - /home/florent/Téléchargements/creil/Contrôle Paie Creil 07-2025.xlsx
+2025-09-01 16:36:58,524 - INFO - la seconde ecriture du fichier a ete realise avec succes !
+2025-09-01 16:36:58,524 - INFO - /home/florent/Téléchargements/creil/Contrôle Paie Creil 07-2025.xlsx
